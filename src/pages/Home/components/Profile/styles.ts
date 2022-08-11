@@ -5,7 +5,7 @@ export const ProfileContainer = styled.div`
   border-radius: 10px;
   width: 95%;
   padding: 1.5rem;
-  margin: -7.5rem auto;
+  margin: -7.5rem auto 2rem;
   max-width: 54rem;
 
   display: flex;
