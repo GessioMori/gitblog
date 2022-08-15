@@ -1,19 +1,21 @@
+import { useContext } from 'react'
+import { PostsContext } from '../../../../contexts/PostsContext'
 import { Post } from '../Post'
 import { PostsContainer } from './styles'
 
-interface PostsProps {
-  posts: {
-    id?: number
-    title: string
-    content: string
-  }[]
-}
-
-export function Posts({ posts }: PostsProps) {
+export function Posts() {
+  const { posts } = useContext(PostsContext)
   return (
     <PostsContainer>
       {posts.map((post) => {
-        return <Post key={post.id} content={post.content} title={post.title} />
+        return (
+          <Post
+            key={post.id}
+            content={post.body}
+            title={post.title}
+            created_at={post.created_at}
+          />
+        )
       })}
     </PostsContainer>
   )

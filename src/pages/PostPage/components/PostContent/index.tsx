@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import nord from 'react-syntax-highlighter/dist/esm/styles/prism/nord'
+import nord from 'react-syntax-highlighter/dist/cjs/styles/hljs/nord'
 import { PostContentContainer } from './styles'
 
 interface PostContentProps {
