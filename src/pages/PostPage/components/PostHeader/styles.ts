@@ -52,4 +52,6 @@ export const PostHeaderTitle = styled.span`
 export const PostHeaderIconsContainer = styled.div`
   display: flex;
   column-gap: 1.5rem;
+  row-gap: 1rem;
+  flex-wrap: wrap;
 `
