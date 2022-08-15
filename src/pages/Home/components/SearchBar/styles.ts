@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const SearchBarContainer = styled.div`
   display: flex;
+
+  form {
+    width: 100%;
+  }
 `
 export const SearchBarInput = styled.input`
   height: 3.125rem;

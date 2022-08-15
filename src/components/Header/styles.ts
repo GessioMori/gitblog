@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
   background-image: url(${effectLeft}), url(${effectCenter}),
     url(${effectRight});
 
-  background-position: top left, bottom center, bottom right;
+  background-position: top left, bottom center, top right;
   background-repeat: no-repeat;
 
   img {
