@@ -1,9 +1,9 @@
 import { PostContentContainer } from './styles'
 
 interface PostContentProps {
-  content: string
+  content: string | undefined
 }
 
 export function PostContent({ content }: PostContentProps) {
-  return <PostContentContainer>{content}</PostContentContainer>
+  return <PostContentContainer>{content || ''}</PostContentContainer>
 }

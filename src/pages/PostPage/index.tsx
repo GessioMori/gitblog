@@ -41,9 +41,7 @@ export function PostPage() {
         url={`https://github.com/GessioMori/gitblog/issues/${postNumber}`}
         numOfComments={post?.comments}
       />
-      <PostContent
-        content={post?.body ? post?.body : 'Conteúdo não encontrado'}
-      />
+      <PostContent content={post?.body} />
     </>
   )
 }
