@@ -15,6 +15,7 @@ interface IPostsContext {
   posts: IPost[]
   postsCount: number
   handleSearchInput: (searchInput: string) => void
+  searchInput: string
 }
 
 export const PostsContext = createContext({} as IPostsContext)
@@ -44,7 +45,12 @@ export function PostsProvider({ children }: PostsProviderProps) {
 
   return (
     <PostsContext.Provider
-      value={{ posts, handleSearchInput, postsCount: posts.length }}
+      value={{
+        posts,
+        handleSearchInput,
+        postsCount: posts.length,
+        searchInput,
+      }}
     >
       {children}
     </PostsContext.Provider>

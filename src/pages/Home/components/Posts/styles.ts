@@ -6,6 +6,6 @@ export const PostsContainer = styled.div`
   gap: 2rem;
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 `

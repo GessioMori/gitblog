@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
+import { PostsContext } from '../../../../contexts/PostsContext'
 import { SearchBarContainer, SearchBarInput } from './styles'
 
 export function SearchBar() {
+  const { handleSearchInput } = useContext(PostsContext)
   const [input, setInput] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -9,6 +11,7 @@ export function SearchBar() {
     e.preventDefault()
     inputRef.current && inputRef.current.blur()
     if (input) {
+      handleSearchInput(input)
       setInput('')
     }
   }
