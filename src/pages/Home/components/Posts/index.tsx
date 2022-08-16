@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { PostsContext } from '../../../../contexts/PostsContext'
 import { Post } from '../Post'
 import { PostsContainer } from './styles'
 
 export function Posts() {
-  const { posts } = useContext(PostsContext)
+  const posts = useContextSelector(PostsContext, (context) => context.posts)
   return (
     <PostsContainer>
       {posts.map((post) => {

@@ -1,12 +1,20 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { PostsContext } from '../../../../contexts/PostsContext'
 import { PublicationsContainer, SearchInfoContainer } from './styles'
 
 export function Publications() {
-  const { postsCount, searchInput, handleSearchInput } =
-    useContext(PostsContext)
+  const { postsCount, searchInput, handleSearchInput } = useContextSelector(
+    PostsContext,
+    (context) => {
+      return {
+        postsCount: context.postsCount,
+        searchInput: context.searchInput,
+        handleSearchInput: context.handleSearchInput,
+      }
+    },
+  )
 
   function handleClearSearch() {
     handleSearchInput('')

@@ -1,9 +1,13 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { useContextSelector } from 'use-context-selector'
 import { PostsContext } from '../../../../contexts/PostsContext'
 import { SearchBarContainer, SearchBarInput } from './styles'
 
 export function SearchBar() {
-  const { handleSearchInput } = useContext(PostsContext)
+  const handleSearchInput = useContextSelector(
+    PostsContext,
+    (context) => context.handleSearchInput,
+  )
   const [input, setInput] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
