@@ -1,6 +1,7 @@
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
+import { api } from '../../../../lib/axios'
 import { ProfileLink } from './../ProfileLink'
 import {
   ProfileContainer,
@@ -23,9 +24,8 @@ export function Profile() {
   const [profileInfo, setProfileInfo] = useState<IProfileInfo | null>(null)
 
   async function loadProfile() {
-    const response = await fetch('https://api.github.com/users/gessiomori')
-    const data = await response.json()
-    setProfileInfo(data)
+    const response = await api.get('/users/' + import.meta.env.VITE_GITHUB_USER)
+    setProfileInfo(response.data)
   }
 
   useEffect(() => {

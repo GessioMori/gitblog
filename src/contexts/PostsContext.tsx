@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
+import { api } from '../lib/axios'
 
 interface IPost {
   url: string
@@ -31,14 +32,15 @@ export function PostsProvider({ children }: PostsProviderProps) {
   function handleSearchInput(searchInput: string) {
     setSearchInput(searchInput)
   }
-
   useEffect(() => {
     async function loadPosts() {
-      const response = await fetch(
-        `https://api.github.com/search/issues?q=${searchInput}%20repo:gessiomori/gitblog`,
+      const response = await api.get(
+        `/search/issues?q=${searchInput}%20repo:${
+          import.meta.env.VITE_GITHUB_USER
+        }/${import.meta.env.VITE_GITHUB_REPO}`,
       )
-      const data = await response.json()
-      setPosts(data.items)
+
+      setPosts(response.data.items)
     }
     loadPosts()
   }, [searchInput])

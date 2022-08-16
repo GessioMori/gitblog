@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { api } from '../../lib/axios'
 import { PostContent } from './components/PostContent'
 import { PostHeader } from './components/PostHeader'
 
@@ -15,16 +16,19 @@ interface PostProps {
 
 export function PostPage() {
   const { postNumber } = useParams()
-
   const [post, setPost] = useState<PostProps | null>(null)
 
   useEffect(() => {
-    if (postNumber) {
-      fetch(
-        `https://api.github.com/repos/gessiomori/gitblog/issues/${postNumber}`,
+    async function loadPost() {
+      const response = await api.get(
+        `/repos/${import.meta.env.VITE_GITHUB_USER}/${
+          import.meta.env.VITE_GITHUB_REPO
+        }/issues/${postNumber}`,
       )
-        .then((response) => response.json())
-        .then((data) => setPost(data))
+      setPost(response.data)
+    }
+    if (postNumber) {
+      loadPost()
     }
   }, [postNumber])
 
