@@ -1,6 +1,7 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const PostPreviewContainer = styled.div`
+export const PostPreviewContainer = styled(NavLink)`
   background-color: ${(props) => props.theme['base-post']};
   border-radius: 10px;
   padding: 1.5rem;
@@ -8,6 +9,16 @@ export const PostPreviewContainer = styled.div`
   flex-direction: column;
   row-gap: 1.5rem;
   border: 2px solid transparent;
+
+  &,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+
+  color: ${(props) => props.theme['base-text']};
 
   :hover {
     border: 2px solid ${(props) => props.theme['base-label']};
@@ -25,6 +36,8 @@ export const PostHeader = styled.header`
     font-weight: bold;
     font-size: 1.25rem;
   }
+
+  text-decoration: none;
 
   span:last-child {
     white-space: nowrap;

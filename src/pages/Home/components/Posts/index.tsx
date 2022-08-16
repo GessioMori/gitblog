@@ -14,6 +14,7 @@ export function Posts() {
             content={post.body}
             title={post.title}
             created_at={post.created_at}
+            number={post.number}
           />
         )
       })}

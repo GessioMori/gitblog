@@ -1,19 +1,19 @@
-import * as dayjs from 'dayjs'
+import { DateFormater } from '../../../../utils/dateFormater'
 import { PostContentPreview, PostHeader, PostPreviewContainer } from './styles'
 
 interface PostProps {
-  id?: number
   content: string
   title: string
   created_at: string
+  number: number
 }
 
-export function Post({ content, title, created_at }: PostProps) {
+export function Post({ content, title, created_at, number }: PostProps) {
   return (
-    <PostPreviewContainer>
+    <PostPreviewContainer to={`/post/${number}`}>
       <PostHeader>
         <span>{title}</span>
-        <span>{dayjs(created_at).format('DD/MM/YYYY')}</span>
+        <span>{DateFormater(created_at)}</span>
       </PostHeader>
       <PostContentPreview>
         <p>{content}</p>

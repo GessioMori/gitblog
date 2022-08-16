@@ -3,24 +3,43 @@ import { useParams } from 'react-router-dom'
 import { PostContent } from './components/PostContent'
 import { PostHeader } from './components/PostHeader'
 
-export function PostPage() {
-  const { postId } = useParams()
-  console.log(postId)
+interface PostProps {
+  title: string
+  body: string
+  comments: number
+  created_at: string
+  user: {
+    login: string
+  }
+}
 
-  const [content, setContent] = useState('')
+export function PostPage() {
+  const { postNumber } = useParams()
+
+  const [post, setPost] = useState<PostProps | null>(null)
 
   useEffect(() => {
-    fetch(
-      'https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/1',
-    )
-      .then((response) => response.json())
-      .then((data) => setContent(data.body))
-  }, [])
+    if (postNumber) {
+      fetch(
+        `https://api.github.com/repos/gessiomori/gitblog/issues/${postNumber}`,
+      )
+        .then((response) => response.json())
+        .then((data) => setPost(data))
+    }
+  }, [postNumber])
 
   return (
     <>
-      <PostHeader />
-      <PostContent content={content} />
+      <PostHeader
+        title={post?.title}
+        createdAt={post?.created_at}
+        userLogin={post?.user.login}
+        url={`https://github.com/GessioMori/gitblog/issues/${postNumber}`}
+        numOfComments={post?.comments}
+      />
+      <PostContent
+        content={post?.body ? post?.body : 'Conteúdo não encontrado'}
+      />
     </>
   )
 }

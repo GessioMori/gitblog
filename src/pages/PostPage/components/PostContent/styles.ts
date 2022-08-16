@@ -30,5 +30,8 @@ export const PostContentContainer = styled(reactMarkdown)`
     width: 100%;
     border-radius: 2px;
     font-size: 1rem;
+    background-color: ${(props) => props.theme['base-post']};
+    padding: 1rem;
+    overflow-x: scroll;
   }
 `

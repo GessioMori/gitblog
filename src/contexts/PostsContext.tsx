@@ -36,7 +36,6 @@ export function PostsProvider({ children }: PostsProviderProps) {
       const response = await fetch(
         `https://api.github.com/search/issues?q=${searchInput}%20repo:gessiomori/gitblog`,
       )
-      console.log(searchInput)
       const data = await response.json()
       setPosts(data.items)
     }

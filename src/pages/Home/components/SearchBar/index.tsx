@@ -9,7 +9,6 @@ export function SearchBar() {
     e.preventDefault()
     inputRef.current && inputRef.current.blur()
     if (input) {
-      console.log(e)
       setInput('')
     }
   }

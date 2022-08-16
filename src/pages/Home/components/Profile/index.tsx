@@ -11,7 +11,7 @@ import {
 
 interface IProfileInfo {
   login: string
-  url: string
+  html_url: string
   name: string
   company: string | null
   bio: string
@@ -44,7 +44,7 @@ export function Profile() {
         <ProfileInfoContainer>
           <ProfileTitle>
             <span>{profileInfo.name}</span>
-            <a href={profileInfo.url}>
+            <a href={profileInfo.html_url} target="_blank" rel="noreferrer">
               <span>VER NO GITHUB</span>
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </a>
