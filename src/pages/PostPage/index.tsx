@@ -38,7 +38,9 @@ export function PostPage() {
         title={post?.title}
         createdAt={post?.created_at}
         userLogin={post?.user.login}
-        url={`https://github.com/GessioMori/gitblog/issues/${postNumber}`}
+        url={`https://github.com/${import.meta.env.VITE_GITHUB_USER}/${
+          import.meta.env.VITE_GITHUB_REPO
+        }/issues/${postNumber}`}
         numOfComments={post?.comments}
       />
       <PostContent content={post?.body} />

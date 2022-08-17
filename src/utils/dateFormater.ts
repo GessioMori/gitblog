@@ -4,7 +4,7 @@ import isToday from 'dayjs/plugin/isToday'
 dayjs.extend(isToday)
 
 export function DateFormater(dateString: string) {
-  const daysPassed = dayjs(dateString).diff(dayjs(), 'days')
+  const daysPassed = dayjs(dayjs()).diff(dateString, 'days')
   if (dayjs(dateString).isToday()) {
     return 'Hoje'
   } else if (daysPassed <= 1) {
