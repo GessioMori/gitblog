@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { Paginator } from '../Paginator'
 import { Posts } from '../Posts'
 import { Publications } from '../Publications'
 import { SearchBar } from '../SearchBar'
-import { postsMock } from './../../../../assets/temp/posts'
 import { MainContainer } from './styles'
 
 export interface Post {
@@ -12,13 +11,12 @@ export interface Post {
 }
 
 export function Main() {
-  const [posts] = useState<Post[]>(postsMock)
-
   return (
     <MainContainer>
       <Publications />
       <SearchBar />
-      <Posts posts={posts} />
+      <Posts />
+      <Paginator />
     </MainContainer>
   )
 }
