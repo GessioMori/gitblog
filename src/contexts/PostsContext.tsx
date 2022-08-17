@@ -51,7 +51,6 @@ export function PostsProvider({ children }: PostsProviderProps) {
       )
       setPosts(response.data.items)
       setTotalPages(Math.ceil(response.data.total_count / 30))
-      console.log(Math.ceil(response.data.total_count / 30))
     }
 
     loadPosts()
