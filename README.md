@@ -1,6 +1,6 @@
 ## GitBlog - React
 
-[**LIVE PREVIEW**]()
+[**LIVE PREVIEW**](https://tourmaline-sorbet-224d9d.netlify.app/)
 
 This repo is an implementation of a blog using React. It retrieves the issues posted in this same repository.
 
