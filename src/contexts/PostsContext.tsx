@@ -15,11 +15,11 @@ interface IPost {
 
 interface IPostsContext {
   posts: IPost[]
-  postsCount: number
   handleSearchInput: (searchInput: string) => void
   searchInput: string
   currentPage: number
   totalPages: number
+  totalCount: number
   handlePageChange: (page: number) => void
 }
 
@@ -34,6 +34,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
   const [searchInput, setSearchInput] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(1)
+  const [totalCount, setTotalCount] = useState<number>(0)
 
   function handleSearchInput(searchInput: string) {
     setSearchInput(searchInput)
@@ -50,6 +51,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
         }/${import.meta.env.VITE_GITHUB_REPO}&page=${currentPage}`,
       )
       setPosts(response.data.items)
+      setTotalCount(response.data.total_count)
       setTotalPages(Math.ceil(response.data.total_count / 30))
     }
 
@@ -61,11 +63,11 @@ export function PostsProvider({ children }: PostsProviderProps) {
       value={{
         posts,
         handleSearchInput,
-        postsCount: posts.length,
         searchInput,
         currentPage,
         totalPages,
         handlePageChange,
+        totalCount,
       }}
     >
       {children}

@@ -5,13 +5,13 @@ import { PostsContext } from '../../../../contexts/PostsContext'
 import { PublicationsContainer, SearchInfoContainer } from './styles'
 
 export function Publications() {
-  const { postsCount, searchInput, handleSearchInput } = useContextSelector(
+  const { searchInput, handleSearchInput, totalCount } = useContextSelector(
     PostsContext,
     (context) => {
       return {
-        postsCount: context.postsCount,
         searchInput: context.searchInput,
         handleSearchInput: context.handleSearchInput,
+        totalCount: context.totalCount,
       }
     },
   )
@@ -31,8 +31,8 @@ export function Publications() {
       ) : (
         <span>Todas publicações</span>
       )}
-      <span>{`${postsCount} ${
-        postsCount === 1 ? 'publicação' : 'publicações'
+      <span>{`${totalCount} ${
+        totalCount === 1 ? 'publicação' : 'publicações'
       }`}</span>
     </PublicationsContainer>
   )
